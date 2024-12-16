@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LAD Player</string>
+    <string name="testLabel">This is a test</string>
 </resources>
