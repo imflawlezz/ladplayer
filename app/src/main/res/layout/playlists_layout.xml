@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:padding="16dp"
             app:spanCount="2"
-            tools:listitem="@layout/playlist_small_card"/>
+            tools:listitem="@layout/playlist_large_card"/>
 
 
 

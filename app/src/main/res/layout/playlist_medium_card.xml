@@ -15,7 +15,7 @@
         android:padding="8dp" >
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/playlistCoverImage"
+            android:id="@+id/trackCover"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_margin="12dp"
@@ -27,15 +27,15 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
-            android:id="@+id/playlistNameText"
+            android:id="@+id/songNameText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            tools:text="Playlist"
+            tools:text="Psina Ple pidor"
             android:textSize="15sp"
             android:textColor="?attr/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/playlistCoverImage"
+            app:layout_constraintTop_toBottomOf="@id/trackCover"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/iconPlay"
             android:ellipsize="end"
@@ -45,15 +45,16 @@
 
         <ImageButton
             android:id="@+id/iconPlay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_margin="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_play_circle"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/playlistNameText"
-            app:layout_constraintTop_toBottomOf="@id/playlistCoverImage"
+            app:layout_constraintStart_toEndOf="@id/songNameText"
+            app:layout_constraintTop_toBottomOf="@id/trackCover"
             app:tint="?attr/colorPrimary" />
 
 
