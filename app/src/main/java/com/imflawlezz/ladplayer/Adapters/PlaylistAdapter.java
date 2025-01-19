@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,10 +31,13 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.Playli
 
     @Override
     public void onBindViewHolder(@NonNull PlaylistViewHolder holder, int position) {
-        String songTitle = playlistItems.get(position);
-        holder.textView.setText(songTitle);
-    }
+        String[] songInfo = playlistItems.get(position).split(" - ");
+        String songTitle = songInfo[0];
+        String artistName = songInfo.length > 1 ? songInfo[1] : "Unknown Artist";
 
+        holder.songNameText.setText(songTitle);
+        holder.artistNameText.setText(artistName);
+    }
 
     @Override
     public int getItemCount() {
@@ -41,11 +45,13 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.Playli
     }
 
     static class PlaylistViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+        TextView songNameText;
+        TextView artistNameText;
 
         public PlaylistViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.songNameText);
+            songNameText = itemView.findViewById(R.id.songNameText);
+            artistNameText = itemView.findViewById(R.id.artistNameText);
         }
     }
 }

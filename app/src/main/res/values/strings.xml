@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">LAD Player</string>
     <string name="testLabel">This is a test</string>
+    <string name="shuffle_playlist_description">Shuffle playlist</string>
+    <string name="play_playlist_description">Play playlist</string>
+    <string name="edit_playlist_description">Edit playlist information</string>
+    <string name="back_playlist_description">Return to playlists</string>
 </resources>
