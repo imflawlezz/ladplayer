@@ -36,11 +36,6 @@ public class TestActivity extends AppCompatActivity {
                 "wery sori - Arrtytist 2",
                 "cumball - Artist 3rtyrty",
                 "safdsdghfghj 4 - Aryreyist 4",
-                "safdsdghfghj 4 - Aryreyist 4",
-                "safdsdghfghj 4 - Aryreyist 4",
-                "safdsdghfghj 4 - Aryreyist 4",
-                "safdsdghfghj 4 - Aryreyist 4",
-                "safdsdghfghj 4 - Aryreyist 4",
                 "dsfkjghdkjiuy8i - xcvr 5 sdjfghjskdgjsdg sdfghsdgfjhgsdf"
         );
 
