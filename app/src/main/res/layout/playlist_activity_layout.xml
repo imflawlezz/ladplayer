@@ -74,7 +74,7 @@
                 android:layout_height="54dp"
                 android:background="@android:color/transparent"
                 app:layout_collapseMode="pin"
-                app:title="Turbo ple "
+                app:title="Turbo ple"
                 app:titleTextColor="?attr/colorSecondary">
 
                 <ImageButton
