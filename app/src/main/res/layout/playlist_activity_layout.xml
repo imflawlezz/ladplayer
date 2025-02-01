@@ -71,7 +71,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="54dp"
+                android:layout_height="@dimen/toolBarHeight"
                 android:background="@android:color/transparent"
                 app:layout_collapseMode="pin"
                 app:title="Turbo ple"

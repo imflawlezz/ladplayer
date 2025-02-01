@@ -1,138 +1,385 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Верхняя панель -->
-
-
-    <LinearLayout
-        android:id="@+id/top_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolBarHeight"
+        android:paddingHorizontal="16dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <ImageButton
-            android:id="@+id/menu_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
+            android:id="@+id/buttonMenu"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="start|center_vertical"
+            android:contentDescription="Menu"
             android:src="@drawable/ic_menu"
-            app:tint="?attr/colorOnPrimary" />
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="?attr/colorSecondary" />
 
-        <TextView
-            android:id="@+id/playing_from"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="PLAYING FROM"
-            android:textColor="@color/gray"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@id/menu_button"
-            android:layout_marginStart="16dp"/>
-
-        <TextView
-            android:id="@+id/playlist_name"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Favorites"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/playingFrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Playing from"
+
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="16sp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/playingFromPlaylist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Playlist qwertyuiopasdf"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textColor="?attr/colorPrimary"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:ellipsize="end"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/buttonSleepTimer"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginHorizontal="16dp"
+            android:contentDescription="Sleep timer"
+            android:src="@drawable/ic_sleep_timer"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="?attr/colorSecondary" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:layout_marginTop="@dimen/toolBarHeight">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/trackCover"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/RoundedImage"
+            app:srcCompat="@drawable/valik_cover"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/playing_from"/>
-    </LinearLayout>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Обложка трека -->
-    <ImageView
-        android:id="@+id/album_cover"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/sample_cover"
-        app:layout_constraintTop_toBottomOf="@id/top_bar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/blue"/>
-
-    <!-- Название трека -->
-    <TextView
-        android:id="@+id/track_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Jenny"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/album_cover"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
-
-    <!-- Имя исполнителя -->
-    <TextView
-        android:id="@+id/artist_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nothing More"
-        android:textColor="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/track_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <!-- Ползунок воспроизведения -->
-    <SeekBar
-        android:id="@+id/seekbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:progress="50"
-        android:max="100"
-        app:layout_constraintTop_toBottomOf="@id/artist_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
-
-    <!-- Кнопки управления -->
-    <LinearLayout
-        android:id="@+id/control_buttons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/seekbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp">
-
-        <ImageButton
-            android:id="@+id/prev_button"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_skip_previous"
-            android:background="@null"
-            android:tint="@color/white"/>
+            android:id="@+id/songInfo"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/trackCover"
+            app:layout_constraintBottom_toTopOf="@id/seekBarContainer">
 
-        <ImageButton
-            android:id="@+id/play_pause_button"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/ic_play"
-            android:backgroundTint="@color/white"
-            android:background="@drawable/rounded_button"/>
+            <ImageButton
+                android:id="@+id/addToPlaylist"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="Add To Playlist"
+                android:src="@drawable/ic_add_to_playlist"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="?attr/colorSecondary" />
 
-        <ImageButton
-            android:id="@+id/next_button"
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="16dp">
+
+                <TextView
+                    android:id="@+id/trackName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cum for you"
+                    android:textStyle="bold"
+                    android:textAppearance="?attr/textAppearanceTitleLarge"
+                    android:textColor="?attr/colorPrimary"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/artistName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Govnorant"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="?attr/colorPrimary"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/addToFavorites"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="Add To Favorites"
+                android:src="@drawable/ic_favorite_border"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="?attr/colorSecondary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/seekBarContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_skip_next"
-            android:background="@null"
-            android:tint="@color/white"/>
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/songInfo"
+            app:layout_constraintBottom_toTopOf="@id/controls">
+
+            <TextView
+                android:id="@+id/timePlayed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0:15"
+                android:textStyle="bold"
+                android:textColor="?attr/colorPrimary"
+                android:layout_marginEnd="8dp"/>
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:thumbTint="?attr/colorSecondary"
+                android:progressTint="?attr/colorSecondary"
+                android:layout_marginHorizontal="8dp"/>
+
+            <TextView
+                android:id="@+id/timeRemaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1:54"
+                android:textStyle="bold"
+                android:textColor="?attr/colorPrimary"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/seekBarContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/queueInfo">
+
+            <ImageButton
+                android:id="@+id/buttonShuffle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:contentDescription="Shuffle songs"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_shuffle"
+                app:tint="?attr/colorSecondary"
+                android:layout_marginStart="16dp"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/buttonPrevious"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="Previous"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_previous"
+                app:tint="?attr/colorSecondary"/>
+
+            <Space
+                android:layout_width="24dp"
+                android:layout_height="1dp"/>
+
+            <ImageButton
+                android:id="@+id/buttonPlayPause"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="Play/Pause"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_play_circle"
+                app:tint="?attr/colorSecondary"/>
+
+            <Space
+                android:layout_width="24dp"
+                android:layout_height="1dp"/>
+
+            <ImageButton
+                android:id="@+id/buttonNext"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="Next"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_next"
+                app:tint="?attr/colorSecondary"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/buttonRepeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:contentDescription="Repeat"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_repeat"
+                app:tint="?attr/colorSecondary"
+                android:layout_marginEnd="16dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/queueInfo"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/controls"
+            app:layout_constraintBottom_toTopOf="@id/bottom_controls">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="16dp">
+
+                <TextView
+                    android:id="@+id/playingNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Playing next:"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/nextTrackInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cumboy - The Weeknd"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textColor="?attr/colorPrimary"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_marginVertical="4dp"/>
+
+                <TextView
+                    android:id="@+id/queueCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="16/1699098"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="?attr/colorPrimary"
+                    android:gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageButton
+                android:id="@+id/buttonEqualizer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:contentDescription="Equalizer"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_eq"
+                app:tint="?attr/colorSecondary"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/buttonQueue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:contentDescription="Queue"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_double_up"
+                app:tint="?attr/colorSecondary"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/buttonOptions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:contentDescription="More options"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_more"
+                app:tint="?attr/colorSecondary"/>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
