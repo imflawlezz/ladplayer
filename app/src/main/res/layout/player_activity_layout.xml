@@ -8,8 +8,7 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolBarHeight"
-        android:paddingHorizontal="16dp"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:paddingHorizontal="16dp">
 
         <ImageButton
             android:id="@+id/buttonMenu"
@@ -72,12 +71,12 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/trackCover"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/RoundedImage"
-            app:srcCompat="@drawable/valik_cover"
-            android:layout_marginTop="16dp"
+            app:srcCompat="@drawable/teto_cover"
+            android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -88,7 +87,6 @@
             android:id="@+id/songInfo"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/trackCover"
@@ -199,14 +197,13 @@
 
             <ImageButton
                 android:id="@+id/buttonShuffle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:contentDescription="Shuffle songs"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_shuffle"
                 app:tint="?attr/colorSecondary"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="8dp"/>
 
             <Space
                 android:layout_width="0dp"
@@ -258,14 +255,13 @@
 
             <ImageButton
                 android:id="@+id/buttonRepeat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:contentDescription="Repeat"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_repeat"
                 app:tint="?attr/colorSecondary"
-                android:layout_marginEnd="16dp"/>
+                android:layout_marginEnd="8dp"/>
         </LinearLayout>
 
         <LinearLayout
