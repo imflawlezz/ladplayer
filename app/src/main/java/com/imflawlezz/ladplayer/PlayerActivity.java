@@ -1,9 +1,11 @@
 package com.imflawlezz.ladplayer;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -16,7 +18,7 @@ public class PlayerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.player_activity_layout); // Make sure this is the correct layout
+        setContentView(R.layout.player_activity_layout);
 
         ImageButton buttonQueue = findViewById(R.id.buttonQueue);
         buttonQueue.setOnClickListener(view -> {

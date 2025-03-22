@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="toolBarHeight">60dp</dimen>
+    <dimen name="toolBarHeight">56dp</dimen>
+    <dimen name="imageButtonSize">25dp</dimen>
+    <dimen name="playPauseButtonSize">50dp</dimen>
+    <dimen name="textSizeSmall">12sp</dimen>
+    <dimen name="textSizeMedium">16sp</dimen>
+    <dimen name="textSizeLarge">20sp</dimen>
+    <dimen name="marginSmall">8dp</dimen>
+    <dimen name="marginMedium">16dp</dimen>
+    <dimen name="marginLarge">32dp</dimen>
+    <dimen name="coverPadding">30dp</dimen>
+    <dimen name="textMaxWidth">250dp</dimen>
 </resources>

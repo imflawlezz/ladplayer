@@ -50,23 +50,55 @@
         </LinearLayout>
 
         <ImageButton
+            android:id="@+id/buttonOptions"
+            android:layout_width="@dimen/imageButtonSize"
+            android:layout_height="@dimen/imageButtonSize"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginStart="@dimen/marginSmall"
+            android:layout_marginEnd="@dimen/marginMedium"
+            android:contentDescription="More options"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_more"
+            app:tint="?attr/colorSecondary"/>
+
+        <ImageButton
             android:id="@+id/buttonSleepTimer"
             android:layout_width="@dimen/imageButtonSize"
             android:layout_height="@dimen/imageButtonSize"
             android:layout_gravity="end|center_vertical"
-            android:layout_marginHorizontal="@dimen/marginMedium"
+            android:layout_marginHorizontal="@dimen/marginSmall"
             android:contentDescription="Sleep timer"
             android:src="@drawable/ic_sleep_timer"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:tint="?attr/colorSecondary" />
+
+        <ImageButton
+            android:id="@+id/buttonEqualizer"
+            android:layout_width="@dimen/imageButtonSize"
+            android:layout_height="@dimen/imageButtonSize"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginHorizontal="@dimen/marginSmall"
+            android:contentDescription="Equalizer"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_eq"
+            app:tint="?attr/colorSecondary"/>
+
+        <ImageButton
+            android:id="@+id/buttonQueue"
+            android:layout_width="@dimen/imageButtonSize"
+            android:layout_height="@dimen/imageButtonSize"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginHorizontal="@dimen/marginSmall"
+            android:contentDescription="Queue"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_queue"
+            app:tint="?attr/colorSecondary"/>
 
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingHorizontal="@dimen/marginMedium"
-        android:paddingBottom="10dp"
         android:layout_marginTop="@dimen/toolBarHeight">
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -76,24 +108,23 @@
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/RoundedImage"
             app:srcCompat="@drawable/teto_cover"
-            android:layout_margin="@dimen/coverPadding"
+            android:padding="@dimen/coverPadding"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintBottom_toTopOf="@id/songInfo"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.35"
+            app:layout_constraintDimensionRatio="1:1"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/songInfo"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginTop="@dimen/marginSmall"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/trackCover"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/trackCover"
-            app:layout_constraintBottom_toTopOf="@id/seekBarContainer">
+            app:layout_constraintBottom_toTopOf="@id/seekBarContainer"
+            android:gravity="center">
 
             <Space
                 android:layout_width="0dp"
@@ -107,7 +138,8 @@
                 android:contentDescription="Add To Playlist"
                 android:src="@drawable/ic_add_to_playlist"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:tint="?attr/colorSecondary" />
+                app:tint="?attr/colorSecondary"
+                />
 
             <Space
                 android:layout_width="0dp"
@@ -117,17 +149,14 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:orientation="vertical"
-                android:gravity="center"
-                android:paddingHorizontal="@dimen/marginMedium">
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/trackName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxWidth="@dimen/textMaxWidth"
-                    android:text="Cum fagkfafkafor you"
+                    android:text="Cum for you"
                     android:textStyle="bold"
                     android:textAppearance="?attr/textAppearanceTitleLarge"
                     android:textColor="?attr/colorPrimary"
@@ -140,14 +169,26 @@
                     android:id="@+id/artistName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxWidth="@dimen/textMaxWidth"
-                    android:text="pidoras pidorsa"
+                    android:text="Govnorant"
                     android:textStyle="bold"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:textColor="?attr/colorPrimary"
                     android:gravity="center"
+                    android:layout_marginVertical="3dp"
                     android:textSize="@dimen/textSizeMedium"/>
+
+                <TextView
+                    android:id="@+id/queueCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="16/1699098"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/textSizeSmall"
+                    android:textColor="?attr/colorPrimary"
+                    android:gravity="center"/>
             </LinearLayout>
 
             <Space
@@ -168,16 +209,17 @@
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_weight="1"/>
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/seekBarContainer"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_marginTop="@dimen/marginLarge"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/trackCover"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/songInfo"
             app:layout_constraintBottom_toTopOf="@id/controls">
@@ -189,7 +231,7 @@
                 android:text="0:15"
                 android:textStyle="bold"
                 android:textColor="?attr/colorPrimary"
-                android:layout_marginEnd="@dimen/marginSmall"
+                android:layout_marginHorizontal="@dimen/marginSmall"
                 android:textSize="@dimen/textSizeSmall"/>
 
             <SeekBar
@@ -208,20 +250,20 @@
                 android:text="1:54"
                 android:textStyle="bold"
                 android:textColor="?attr/colorPrimary"
-                android:layout_marginStart="@dimen/marginSmall"
+                android:layout_marginHorizontal="@dimen/marginSmall"
                 android:textSize="@dimen/textSizeSmall"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/controls"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_marginTop="@dimen/marginMedium"
-            app:layout_constraintTop_toBottomOf="@id/seekBarContainer"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/trackCover"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/seekBarContainer"
             app:layout_constraintBottom_toTopOf="@id/queueInfo">
 
             <Space
@@ -306,22 +348,22 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/queueInfo"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginTop="@dimen/marginLarge"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/marginSmall"
+            app:layout_constraintStart_toEndOf="@id/trackCover"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/controls"
-            app:layout_constraintBottom_toTopOf="@id/bottom_controls">
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:gravity="center"
                 android:paddingHorizontal="@dimen/marginMedium">
 
@@ -336,11 +378,15 @@
                     android:textStyle="bold"
                     android:layout_gravity="center"/>
 
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="1dp" />
+
                 <TextView
                     android:id="@+id/nextTrackInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cumboy - The Weeknd"
+                    android:text="Mimukawa Nice Try - nununununununununununununununununununununun"
                     android:textAppearance="?attr/textAppearanceTitleMedium"
                     android:textColor="?attr/colorPrimary"
                     android:maxLines="1"
@@ -348,73 +394,8 @@
                     android:gravity="center"
                     android:textStyle="bold"
                     android:layout_marginVertical="@dimen/marginSmall"
-                    android:textSize="@dimen/textSizeMedium"/>
-
-                <TextView
-                    android:id="@+id/queueCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="16/1699098"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/textSizeSmall"
-                    android:textColor="?attr/colorPrimary"
-                    android:gravity="center"/>
+                    android:textSize="@dimen/textSizeSmall"/>
             </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/bottom_controls"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/marginMedium"
-            android:padding="@dimen/marginSmall"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <ImageButton
-                android:id="@+id/buttonEqualizer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                android:contentDescription="Equalizer"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_eq"
-                app:tint="?attr/colorSecondary"/>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <ImageButton
-                android:id="@+id/buttonQueue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                android:contentDescription="Queue"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_double_up"
-                app:tint="?attr/colorSecondary"/>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <ImageButton
-                android:id="@+id/buttonOptions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                android:contentDescription="More options"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_more"
-                app:tint="?attr/colorSecondary"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
